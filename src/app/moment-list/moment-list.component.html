@@ -1,0 +1,30 @@
+<div role="main" class="container">
+    <div class="row">
+        <div class="col leftmenu">
+            <a routerLink="/add-moment" class="btn btn-link">Add Moment</a>
+        </div>
+        <div class="col">
+            <h2>Moments</h2>
+            <table id="moments">
+                <thead>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Tag</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="moments">
+                    <tr *ngFor="let moment of moments; index as i">
+                        <td>{{i+1}}</td>
+                        <td><img src="https://s3-ap-southeast-2.amazonaws.com/assets.lifeiq.net/{{moment.images}}" width="50" height="50"></td>
+                        <td>{{ moment.title}}</td>
+                        <td>{{ moment.tags }}</td>
+                        <td><button (click)="editMoment(moment._id)">Edit</button><button (click)="deleteMoment(moment._id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
